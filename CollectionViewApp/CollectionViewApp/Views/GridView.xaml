@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CollectionViewApp.Views.GridView"
+             Title="Grid View">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Load" Command="{Binding LoadDataCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <CollectionView ItemsSource="{Binding Monkeys}" HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image 
+                                Grid.Row="0"
+                                WidthRequest="200" 
+                                HeightRequest="200" 
+                                Margin="10"
+                                Source="{Binding Image}"
+                                Aspect="AspectFill"/>
+                            <Label 
+                                Grid.Row="1"
+                                Text="{Binding Name}"
+                                MaxLines="1"
+                                FontSize="18"
+                                HorizontalOptions="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
