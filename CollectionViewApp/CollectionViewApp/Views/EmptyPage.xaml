@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CollectionViewApp.Views.EmptyPage"
              Title="Empty View">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Load" Command="{Binding LoadDataCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
             <CollectionView ItemsSource="{Binding Monkeys}" HorizontalOptions="FillAndExpand">
